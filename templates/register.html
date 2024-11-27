@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}  
+
+{% block content %}
+<div class="container">
+    <div class="col-12 col-md-6 offset-0 offset-md-3 mt-4 mb-4">
+        <h3 class="text-center">Registro de Usuario</h3>
+        <div>
+            <form action="{% url 'register' %}" method="post">  
+                {% csrf_token %}
+                {{ form.non_field_errors }}
+                
+                <div class="mb-3 text-center">
+                    <label for="{{ form.username.id_for_label }}" class="form-label">
+                        {{ form.username.label_tag }}
+                    </label>
+                    <div>{{ form.username|add_class:"form-control" }}</div>
+                    <div class="text-danger">{{ form.username.errors }}</div>
+                </div>
+
+                <div class="mb-3 text-center">
+                    <label for="{{ form.email.id_for_label }}" class="form-label">
+                        {{ form.email.label_tag }}  
+                    </label>
+                    <div>{{ form.email|add_class:"form-control" }}</div>
+                    <div class="text-danger">{{ form.email.errors }}</div>
+                </div>
+                
+                <div class="mb-3 text-center">
+                    <label for="{{ form.password1.id_for_label }}" class="form-label">
+                        {{ form.password1.label_tag }}
+                    </label>
+                    <div>{{ form.password1|add_class:"form-control" }}</div>
+                    <div class="text-danger">{{ form.password1.errors }}</div>
+                </div>
+
+                <div class="mb-3 text-center">
+                    <label for="{{ form.password2.id_for_label }}" class="form-label">
+                        {{ form.password2.label_tag }}
+                    </label>
+                    <div>{{ form.password2|add_class:"form-control" }}</div>
+                    <div class="text-danger">{{ form.password2.errors }}</div>
+                </div>
+                
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary mb-3">Registrar</button>
+                </div>
+                <div class="text-center">
+                    <a href="{% url 'login' %}">¿Tienes cuenta? Inicia sesión</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

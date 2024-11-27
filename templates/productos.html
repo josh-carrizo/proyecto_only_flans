@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %}Lista de Flanes{% endblock %}
+
+{% block content %}
+<h1>Lista de Flanes</h1>
+
+<div class="list-group">
+    {% for flan in flanes %}
+        <div class="list-group-item d-flex align-items-start">
+            <div class="flex-grow-1">
+                <h5 class="mb-1">{{ flan.name }}</h5>
+                <p class="mb-1">{{ flan.description }}</p>
+                <p><strong>Precio: ${{ flan.price }}</strong></p>
+                <a href="{% url 'agregar_al_carrito' flan.id %}" class="btn btn-primary mt-2">Agregar al carrito</a>
+            </div>
+            <img src="{{ flan.image_url }}" alt="{{ flan.name }}" class="flan-image ms-3 d-none d-md-block" style="width: 15em; height: auto;">
+        </div>
+    {% endfor %}
+</div>
+
+{% endblock %}

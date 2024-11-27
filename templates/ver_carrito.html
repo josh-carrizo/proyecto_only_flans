@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}Carrito de Compras{% endblock %}
+
+{% block content %}
+<h1>Carrito de Compras</h1>
+
+{% if carrito.items.all %}
+    <div class="list-group">
+        {% for item in carrito.items.all %}
+            <div class="list-group-item d-flex align-items-start">
+                <div class="flex-grow-1">
+                    <h5 class="mb-1">{{ item.flan.name }}</h5>
+                    <p class="mb-1">Precio: ${{ item.flan.price }}</p>
+                    <p>Cantidad: {{ item.quantity }}</p>
+                    <p><strong>Total: ${{ item.get_total }}</strong></p>
+                    <a href="{% url 'eliminar_del_carrito' item.id %}" class="btn btn-danger mt-2">Eliminar</a>
+                </div>
+                <img src="{{ item.flan.image_url }}" alt="{{ item.flan.name }}" class="flan-image ms-3 d-none d-md-block"  style="width: 20em; height: auto;">
+            </div>
+        {% endfor %}
+    </div>
+
+    <h3 class="mt-4">Total del Carrito: ${{ total }}</h3> 
+
+{% else %}
+    <p>No tienes productos en tu carrito.</p>
+{% endif %}
+
+{% endblock %}

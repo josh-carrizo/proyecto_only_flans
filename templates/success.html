@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2 class="text-center">Enviado con éxito</h2>
+    <h3 class="text-center">{{ message }}</h3>
+    <div class="text-center">
+        <a href="{% url 'index' %}" class="btn btn-primary mx-auto mb-3">Volver a Inicio</a>
+    </div>
+{% endblock %}

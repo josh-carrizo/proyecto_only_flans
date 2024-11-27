@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bienvenido</title>
+</head>
+<body>
+    {% extends 'base.html' %}
+
+    {% block content %}
+        <h2>Bienvenido {{user.get_username}}: Mira nuestro menu privado solo para selectos</h2>
+        <div class="container">
+            <div class="row">
+                {% for flan in flanes %}
+                <div class="col-md-4 mb-3">
+                    <div class="card">
+                        <img src="{{ flan.image_url }}" class="card-img-top" alt="{{ flan.name }}">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ flan.name }}</h5>
+                            <p class="card-text">{{ flan.description }}</p>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    {% endblock %}
+
+</body>
+</html>

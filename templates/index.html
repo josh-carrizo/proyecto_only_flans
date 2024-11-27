@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bienvenido a OnlyFlans</title>
+</head>
+<body>
+
+    {% extends 'base.html' %}
+
+    {% block content %}
+        <div class="container mt-4">
+            <h1 class="text-center">Nuestros Flanes</h1>
+
+            <div class="row">
+                {% for flan in flanes %}
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="{{ flan.image_url }}" class="card-img-top" alt="{{ flan.name }}">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ flan.name }}</h5>
+                            <p class="card-text">{{ flan.description }}</p>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    {% endblock %}
+</body>
+</html>
